@@ -1,0 +1,11 @@
+*.code-workspace
+.env*
+!.env.example
+.idea
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

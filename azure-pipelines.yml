@@ -1,0 +1,24 @@
+---
+pool:
+  vmImage: ubuntu-latest
+schedules:
+  - cron: 0 4 * * 0
+    branches:
+      include:
+        - main
+    always: 'true'
+    displayName: Every Sunday, 1 AM
+steps:
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: .npmrc
+  - bash: |
+      git config --global user.email 'bot@renovateapp.com'
+      git config --global user.name 'Renovate Bot'
+      npx --userconfig .npmrc renovate
+    env:
+      GITHUB_COM_TOKEN: $(GITHUB_COM_TOKEN)
+      RENOVATE_TOKEN: $(RENOVATE_TOKEN)
+trigger: none
+variables:
+  - group: renovatebot

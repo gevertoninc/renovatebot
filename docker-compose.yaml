@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  renovate:
+    image: renovate/renovate:latest
+    env_file: .env
+    volumes:
+      - ./config.js:/usr/src/app/config.js

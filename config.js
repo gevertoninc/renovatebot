@@ -1,0 +1,31 @@
+module.exports = {
+  baseBranches: ['update-dependencies'],
+  enabledManagers: ['npm'],
+  endpoint: 'https://dev.azure.com/digital-office',
+  extends: [':semanticCommitTypeAll(build)'],
+  ignoreDeps: [
+    '@opentelemetry/api',
+    '@opentelemetry/core',
+    '@opentelemetry/exporter-zipkin',
+    '@opentelemetry/instrumentation',
+    '@opentelemetry/instrumentation-http',
+    '@opentelemetry/instrumentation-knex',
+    '@opentelemetry/instrumentation-winston',
+    '@opentelemetry/propagator-b3',
+    '@opentelemetry/resources',
+    '@opentelemetry/sdk-trace-base',
+    '@opentelemetry/sdk-trace-node',
+    '@opentelemetry/semantic-conventions',
+  ],
+  packageRules: [
+    {
+      groupName: 'Minor and patch dependencies',
+      matchUpdateTypes: ['minor', 'patch'],
+    },
+  ],
+  platform: 'azure',
+  rangeStrategy: 'bump',
+  repositories: ['credit-as-a-service/tenant-core'],
+  requireConfig: 'ignored',
+  token: process.env.RENOVATE_TOKEN,
+};
